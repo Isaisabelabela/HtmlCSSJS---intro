@@ -1,0 +1,33 @@
+<div id="carousel">
+  <div class="slide active">Projeto 1</div>
+  <div class="slide">Projeto 2</div>
+  <div class="slide">Projeto 3</div>
+  <button id="prev">Anterior</button>
+  <button id="next">Próximo</button>
+</div>
+
+<style>
+  .slide {
+    display: none;
+  }
+  .active {
+    display: block;
+  }
+</style>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let currentIndex = 0;
+
+  document.getElementById('next').addEventListener('click', () => {
+    slides[currentIndex].classList.remove('active');
+    currentIndex = (currentIndex + 1) % slides.length;
+    slides[currentIndex].classList.add('active');
+  });
+
+  document.getElementById('prev').addEventListener('click', () => {
+    slides[currentIndex].classList.remove('active');
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    slides[currentIndex].classList.add('active');
+  });
+</script>
